@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#246b58">
+<title>Petualangan Pintar — Kelas 1 SD</title>
+<style>
+:root{--ink:#243b35;--green:#246b58;--mint:#e7f5ec;--yellow:#ffd76a;--coral:#ff8e78;--blue:#8bd3e6;--paper:#fffdf6;--shadow:0 12px 30px #254b3b18}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#f5f8e9,#e8f6f2 55%,#fff0df);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;color:var(--ink);min-height:100vh}
+button{font:inherit;cursor:pointer;border:0}.wrap{max-width:1050px;margin:auto;padding:22px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:clamp(19px,4vw,27px);color:var(--green)}.brand-mark{background:var(--yellow);border-radius:16px;padding:9px;font-size:25px;box-shadow:0 5px 0 #e5b847}
+.pill{background:#fff;border:1px solid #e4eadf;border-radius:999px;padding:9px 14px;font-weight:800;font-size:13px;box-shadow:0 4px 12px #243b350a}
+.hero{background:var(--green);color:white;border-radius:30px;padding:clamp(22px,5vw,42px);position:relative;overflow:hidden;box-shadow:var(--shadow);display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:10px}
+.hero:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:#ffffff12;right:-55px;top:-90px}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:900;color:#ccebd9}.hero h1{font-size:clamp(34px,7vw,58px);line-height:1.02;margin:10px 0}.hero p{max-width:520px;color:#e1f4e8;line-height:1.6;margin:0 0 20px}.hero-art{text-align:center;font-size:clamp(85px,16vw,150px);filter:drop-shadow(0 12px 5px #153e302b);z-index:1}
+.btn{border-radius:15px;padding:13px 19px;font-weight:900;transition:.15s;box-shadow:0 5px 0 #00000018}.btn:active{transform:translateY(3px);box-shadow:0 2px 0 #00000018}.primary{background:var(--yellow);color:#57451a}.secondary{background:#fff;color:var(--green)}.small{padding:9px 13px;font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:17px 0 27px}.stat{background:#fff;border-radius:18px;padding:14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px}.stat b{display:block;font-size:19px}.stat span{font-size:12px;color:#6c8177}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:24px 0 13px}.section-title h2{font-size:22px;margin:0}.section-title p{margin:0;color:#72847b;font-size:13px}
+.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.subject{border-radius:22px;padding:18px;text-align:left;box-shadow:var(--shadow);border:2px solid transparent;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);transition:.15s}.subject:hover{transform:translateY(-3px);border-color:#fff}.subject .emoji{font-size:35px}.subject strong{font-size:17px}.subject small{color:#526a60}.subject.math{background:#fff0c9}.subject.indo{background:#ffe3dc}.subject.english{background:#dff4fa}.subject.ipas{background:#e2f3dc}.subject.pancasila{background:#eee5ff}.subject.pai{background:#dff2e9}
+.panel{background:#fff;border-radius:26px;padding:clamp(18px,4vw,30px);box-shadow:var(--shadow);margin-top:18px}.hidden{display:none!important}
+.back{background:#edf4ef;color:var(--green);border-radius:12px;padding:9px 13px;font-weight:800;margin-bottom:17px}.quiz-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.progress{height:10px;background:#edf1eb;border-radius:99px;overflow:hidden;margin:15px 0 23px}.progress>div{height:100%;width:0;background:linear-gradient(90deg,#55b98b,#f4c84e);border-radius:99px;transition:width .3s}.question{font-size:clamp(21px,4vw,29px);line-height:1.35;margin:12px 0 20px}.q-emoji{font-size:42px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:11px}.answer{background:#f5f8f3;border:2px solid #e8eee6;border-radius:16px;padding:15px;text-align:left;font-weight:800;color:var(--ink);min-height:60px}.answer:hover{border-color:#8fc9a9;background:#eff9f1}.answer.correct{background:#dff5e4;border-color:#56b77a}.answer.wrong{background:#ffe7e1;border-color:#ed907d}.feedback{margin-top:15px;padding:13px 15px;border-radius:15px;background:#f1f7ef;line-height:1.5;font-size:14px}.next-row{display:flex;justify-content:flex-end;margin-top:15px}
+.result{text-align:center;padding:20px}.result .big{font-size:76px}.result h2{font-size:30px;margin:5px}.score{font-size:48px;font-weight:1000;color:var(--green)}.result p{color:#667a70;line-height:1.6}.badge-list{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:15px}
+footer{text-align:center;color:#7a8b82;font-size:12px;padding:30px 10px}
+@media(max-width:650px){.wrap{padding:14px}.hero{grid-template-columns:1fr}.hero-art{position:absolute;right:15px;bottom:4px;opacity:.22;font-size:110px}.hero>div:first-child{z-index:1}.subjects{grid-template-columns:repeat(2,1fr)}.stats{gap:7px}.stat{padding:10px;gap:6px}.stat span{font-size:10px}.answers{grid-template-columns:1fr}.section-title p{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="brand"><span class="brand-mark">🧭</span> Petualangan Pintar</div><div class="pill">⭐ Kelas 1 SD</div></header>
+<main>
+<section id="home">
+ <div class="hero"><div><div class="eyebrow">Misi belajar dimulai!</div><h1>Halo, Penjelajah Cilik! 🌈</h1><p>Jelajahi pulau ilmu, jawab tantangan seru, dan kumpulkan bintang. Siap jadi makin pintar?</p><button class="btn primary" onclick="document.getElementById('subjects-title').scrollIntoView({behavior:'smooth'})">Mulai bertualang →</button></div><div class="hero-art">🏝️</div></div>
+ <div class="stats"><div class="stat"><span>⭐</span><div><b id="star-count">0</b><span>Bintang terkumpul</span></div></div><div class="stat"><span>🏅</span><div><b id="played-count">0</b><span>Misi selesai</span></div></div><div class="stat"><span>🗺️</span><div><b>6</b><span>Pulau ilmu</span></div></div></div>
+ <div class="section-title" id="subjects-title"><div><h2>Pilih pulau petualangan</h2><p>Setiap pulau punya tantangan berbeda.</p></div></div>
+ <div class="subjects" id="subject-grid"></div>
+</section>
+<section id="game" class="panel hidden">
+ <button class="back" onclick="goHome()">← Kembali ke peta</button>
+ <div class="quiz-top"><div class="pill" id="game-subject">📚 Pulau Ilmu</div><div class="pill" id="counter">Soal 1 dari 5</div></div>
+ <div class="progress"><div id="progress-bar"></div></div>
+ <div class="q-emoji" id="q-emoji">🌟</div><h2 class="question" id="question"></h2>
+ <div class="answers" id="answers"></div><div id="feedback" class="feedback hidden" aria-live="polite"></div>
+ <div class="next-row"><button id="next-btn" class="btn primary hidden" onclick="nextQuestion()">Lanjut →</button></div>
+</section>
+<section id="result" class="panel hidden"><div class="result"><div class="big" id="result-emoji">🏆</div><h2 id="result-title">Misi selesai!</h2><div class="score" id="result-score">100</div><p id="result-copy"></p><div class="badge-list" id="result-badges"></div><button class="btn primary" onclick="goHome()">Kembali ke peta 🗺️</button></div></section>
+</main>
+<footer>Petualangan Pintar · Media latihan belajar Kelas 1 SD<br>Materi latihan umum yang dapat disesuaikan dengan buku dan pembelajaran di sekolah.</footer>
+</div>
+<script>
+const subjects = [
+ {id:'indo',name:'Bahasa Indonesia',emoji:'📖',island:'Pulau Kata',cls:'indo',questions:[
+  ['Huruf pertama pada kata “BOLA” adalah …','B','B','O','L','A','Kata BOLA dimulai dengan huruf B.'],
+  ['Lawan kata “besar” adalah …','Kecil','Panjang','Tinggi','Kecil','Lebar','Kecil adalah lawan kata besar.'],
+  ['Kalimat yang diakhiri tanda tanya adalah …','Siapa namamu?','Saya suka apel.','Ayo bermain!','Siapa namamu?','Ibu memasak.','Tanda tanya (?) digunakan untuk mengakhiri kalimat pertanyaan.'],
+  ['Kata yang tepat untuk melengkapi “Adik sedang …”','Tidur','Meja','Buku','Tidur','Kursi','Tidur adalah kata yang menyatakan kegiatan.'],
+  ['Jumlah suku kata pada kata “buku” adalah …','Dua','Satu','Tiga','Dua','Empat','Kata bu-ku terdiri dari dua suku kata.']
+ ]},
+ {id:'math',name:'Matematika',emoji:'🔢',island:'Pulau Angka',cls:'math',questions:[
+  ['Hasil dari 3 + 4 adalah …','7','6','7','8','9','Tiga ditambah empat sama dengan tujuh.'],
+  ['Angka setelah 8 adalah …','9','7','9','10','6','Urutan bilangan setelah 8 adalah 9.'],
+  ['Manakah bilangan yang paling besar?','9','5','7','9','3','Dari 5, 7, 9, dan 3, bilangan terbesar adalah 9.'],
+  ['Hasil dari 10 − 3 adalah …','7','6','7','8','9','Sepuluh dikurangi tiga sama dengan tujuh.'],
+  ['Bentuk yang memiliki 3 sisi adalah …','Segitiga','Lingkaran','Persegi','Segitiga','Persegi panjang','Segitiga memiliki tiga sisi.']
+ ]},
+ {id:'english',name:'Bahasa Inggris',emoji:'🔤',island:'Pulau English',cls:'english',questions:[
+  ['Bahasa Inggris dari “apel” adalah …','Apple','Book','Apple','Cat','Ball','Apel dalam bahasa Inggris adalah apple.'],
+  ['Arti kata “cat” adalah …','Kucing','Anjing','Burung','Ikan','Kucing','Cat berarti kucing.'],
+  ['Kita mengucapkan “Good morning” pada …','Pagi hari','Malam hari','Pagi hari','Tengah malam','Sore menjelang tidur','Good morning digunakan untuk menyapa pada pagi hari.'],
+  ['Angka “two” berarti …','Dua','Satu','Dua','Tiga','Empat','Two adalah angka dua.'],
+  ['Bahasa Inggris dari “biru” adalah …','Blue','Red','Green','Blue','Yellow','Biru dalam bahasa Inggris adalah blue.']
+ ]},
+ {id:'ipas',name:'IPAS',emoji:'🌱',island:'Hutan Pengetahuan',cls:'ipas',questions:[
+  ['Bagian tubuh untuk melihat adalah …','Mata','Telinga','Hidung','Mata','Tangan','Mata digunakan untuk melihat.'],
+  ['Hewan yang hidup di air dan bernapas dengan insang adalah …','Ikan','Ayam','Kucing','Ikan','Kambing','Ikan hidup di air dan bernapas menggunakan insang.'],
+  ['Agar tubuh sehat, kita perlu …','Makan bergizi dan bergerak','Begadang setiap hari','Tidak mandi','Makan bergizi dan bergerak','Tidak minum air','Makanan bergizi dan aktivitas fisik membantu menjaga kesehatan.'],
+  ['Matahari terbit dari arah …','Timur','Barat','Utara','Timur','Selatan','Matahari tampak terbit dari arah timur.'],
+  ['Tanaman membutuhkan … untuk tumbuh.','Air dan cahaya matahari','Plastik dan batu','Mainan dan kertas','Air dan cahaya matahari','Sepatu dan tas','Tanaman memerlukan air, cahaya, dan udara untuk tumbuh.']
+ ]},
+ {id:'pancasila',name:'Pendidikan Pancasila',emoji:'🤝',island:'Kampung Rukun',cls:'pancasila',questions:[
+  ['Saat teman berbicara, sebaiknya kita …','Mendengarkan','Memotong pembicaraan','Berteriak','Mendengarkan','Pergi begitu saja','Mendengarkan menunjukkan sikap menghargai teman.'],
+  ['Contoh menjaga kebersihan kelas adalah …','Membuang sampah pada tempatnya','Mencoret meja','Membiarkan sampah','Membuang sampah pada tempatnya','Melempar kertas ke lantai','Membuang sampah pada tempatnya menjaga kelas tetap bersih.'],
+  ['Jika meminjam pensil teman, kita harus …','Meminta izin','Langsung mengambil','Menyembunyikannya','Meminta izin','Membuangnya','Kita harus meminta izin sebelum meminjam barang orang lain.'],
+  ['Ketika berbeda pendapat, kita sebaiknya …','Bermusyawarah','Bertengkar','Mengejek','Bermusyawarah','Memaksa teman','Musyawarah membantu mencari keputusan bersama.'],
+  ['Bendera negara Indonesia berwarna …','Merah dan putih','Biru dan putih','Hijau dan kuning','Merah dan putih','Merah dan biru','Bendera Indonesia terdiri dari warna merah dan putih.']
+ ]},
+ {id:'pai',name:'Pendidikan Agama Islam',emoji:'🕌',island:'Taman Akhlak',cls:'pai',questions:[
+  ['Kitab suci umat Islam adalah …','Al-Qur’an','Injil','Weda','Al-Qur’an','Taurat','Al-Qur’an adalah kitab suci umat Islam.'],
+  ['Sebelum makan, umat Islam dianjurkan membaca …','Basmalah','Hamdalah','Salam tidur','Basmalah','Takbir Idulfitri','Basmalah dibaca sebelum memulai kegiatan baik, termasuk makan.'],
+  ['Salat wajib dalam sehari semalam berjumlah …','Lima waktu','Tiga waktu','Empat waktu','Lima waktu','Enam waktu','Salat wajib dilaksanakan lima waktu dalam sehari semalam.'],
+  ['Jika bertemu teman, kita dapat mengucapkan …','Assalamu’alaikum','Selamat tidur','Sampai kemarin','Assalamu’alaikum','Selamat malam selalu','Assalamu’alaikum adalah salam dalam Islam.'],
+  ['Contoh perilaku jujur adalah …','Mengakui kesalahan','Menyalahkan teman','Berkata bohong','Mengakui kesalahan','Mengambil barang diam-diam','Mengakui kesalahan merupakan salah satu contoh perilaku jujur.']
+ ]}
+];
+let current=null,index=0,score=0,answered=false;
+let stars=Number(localStorage.getItem('pp-stars')||0),played=Number(localStorage.getItem('pp-played')||0);
+function updateStats(){document.getElementById('star-count').textContent=stars;document.getElementById('played-count').textContent=played}
+function renderSubjects(){document.getElementById('subject-grid').innerHTML=subjects.map(s=>`<button class="subject ${s.cls}" onclick="startGame('${s.id}')"><span class="emoji">${s.emoji}</span><span><strong>${s.name}</strong><br><small>${s.island} · ${s.questions.length} tantangan →</small></span></button>`).join('')}
+function show(id){['home','game','result'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id))}
+function startGame(id){current=subjects.find(s=>s.id===id);index=0;score=0;show('game');renderQuestion();window.scrollTo({top:0,behavior:'smooth'})}
+function renderQuestion(){answered=false;let q=current.questions[index];document.getElementById('game-subject').textContent=current.emoji+' '+current.name;document.getElementById('counter').textContent=`Soal ${index+1} dari ${current.questions.length}`;document.getElementById('progress-bar').style.width=(index/current.questions.length*100)+'%';document.getElementById('q-emoji').textContent=['🌟','🧩','🚀','🎈','🏆'][index%5];document.getElementById('question').textContent=q[0];document.getElementById('feedback').classList.add('hidden');document.getElementById('next-btn').classList.add('hidden');
+ let opts=[q[2],q[3],q[4],q[5]].map((v,i)=>({v,correct:v===q[1]}));opts.sort(()=>Math.random()-.5);
+ document.getElementById('answers').innerHTML=opts.map((o,i)=>`<button class="answer" data-correct="${o.correct}" onclick="chooseAnswer(this)"><b>${String.fromCharCode(65+i)}.</b> ${o.v}</button>`).join('');
+}
+function chooseAnswer(btn){if(answered)return;answered=true;let ok=btn.dataset.correct==='true';if(ok)score++;document.querySelectorAll('.answer').forEach(b=>{b.disabled=true;if(b.dataset.correct==='true')b.classList.add('correct')});if(!ok)btn.classList.add('wrong');let q=current.questions[index];let fb=document.getElementById('feedback');fb.textContent=(ok?'🎉 Hebat! Jawabanmu tepat. ':'🌱 Belum tepat, tidak apa-apa! ')+q[6];fb.classList.remove('hidden');document.getElementById('next-btn').textContent=index===current.questions.length-1?'Lihat hasil 🏆':'Lanjut →';document.getElementById('next-btn').classList.remove('hidden')}
+function nextQuestion(){if(index<current.questions.length-1){index++;renderQuestion()}else finishGame()}
+function finishGame(){let earned=score*2;stars+=earned;played++;localStorage.setItem('pp-stars',stars);localStorage.setItem('pp-played',played);updateStats();let pct=Math.round(score/current.questions.length*100);document.getElementById('result-emoji').textContent=pct===100?'🏆':pct>=60?'🌟':'💪';document.getElementById('result-title').textContent=pct===100?'Luar biasa! Sempurna!':pct>=60?'Hebat, penjelajah!':'Terus berlatih, ya!';document.getElementById('result-score').textContent=pct+'%';document.getElementById('result-copy').textContent=`Kamu menjawab ${score} dari ${current.questions.length} soal dengan benar dan mendapatkan ${earned} bintang. Setiap latihan membuatmu semakin hebat!`;document.getElementById('result-badges').innerHTML=`<span class="pill">⭐ +${earned} bintang</span><span class="pill">🧠 ${current.name}</span>`;show('result');window.scrollTo({top:0,behavior:'smooth'})}
+function goHome(){show('home');updateStats();window.scrollTo({top:0,behavior:'smooth'})}
+renderSubjects();updateStats();
+</script>
+</body>
+</html>
